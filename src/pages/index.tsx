@@ -23,11 +23,11 @@ export default function Home() {
     setVisivel('form')
   }
   function clienteExcluido(cliente: Cliente) {
-    console.log(`Excluir ...${cliente.nome}`)
+    console.log(`Excluir ${cliente.nome}`)
   }
   function novoCliente() {
     setCliente(Cliente.vazio())
-    setVisivel('tabela')
+    setVisivel('form')
   }
   function salvarCliente(cliente: Cliente) {
     console.log(cliente)
