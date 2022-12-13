@@ -16,10 +16,10 @@ static vazio() {
     get id() {
         return this.#id
     }
-    get nome() {
-        return this.#nome
-    }
     get idade() {
         return this.#idade
+    }
+    get nome() {
+        return this.#nome
     }
 }

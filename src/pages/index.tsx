@@ -1,22 +1,25 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import ColecaoCliente from "../backend/db/ColecaoCliente"
 import Botao from "../components/Botao"
 import Formulario from "../components/Formulario"
 import Layout from "../components/Layout"
 import Tabela from "../components/Tabela"
 import Cliente from "../core/Cliente"
+import ClienteRepositorio from "../core/ClienteRepositorio"
+
 
 
 export default function Home() {
 
+  const repo: ClienteRepositorio = new ColecaoCliente()
+
   const [cliente, setCliente] = useState<Cliente>(Cliente.vazio())
+  const [clientes, setClientes] = useState<Cliente>([])
   const [visivel, setVisivel] = useState<'tabela' | 'form'>('tabela')
 
-  const clientes = [
-    new Cliente('Ana', 34, '1'),
-    new Cliente('Bia', 45, '2'),
-    new Cliente('Carlos', 23, '3'),
-    new Cliente('Pedro', 54, '4'),
-  ]
+  useEffect(() => {
+    repo.obterTodos().then(setClientes)
+  }, [])
 
   function clienteSelecionado(cliente: Cliente) {
     setCliente(cliente)
@@ -43,7 +46,7 @@ export default function Home() {
         {visivel === 'tabela' ? (
           <>
             <div className="flex justify-end">
-              <Botao color="blue" className="mb-4" 
+              <Botao className="mb-4 bg-gradient-to-r from-blue-400 to-blue-700" 
                 onClick={novoCliente}>
                 Novo Cliente
               </Botao>

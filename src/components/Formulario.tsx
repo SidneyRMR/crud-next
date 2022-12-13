@@ -37,12 +37,12 @@ export default function Formulario(props: FormularioProps) {
                 valorMudou={setIdade}
             />
             <div className="flex justify-end mt-7">
-                <Botao className="mr-2 bg-green-400"
+                <Botao className="mr-2 bg-gradient-to-r from-green-400 to-green-700"
                     onClick={() => props.clienteMudou?.(new Cliente(nome, +idade, id))}    
                 >
                     {id ? 'Alterar' : 'Salvar'}
                 </Botao>
-                <Botao className="bg-gray-400"
+                <Botao className="bg-gradient-to-r from-gray-400 to-gray-700"
                     onClick={props.cancelado}>
                     Cancelar
                 </Botao>
